@@ -1,0 +1,8 @@
+/bin
+/target/
+/*.bak
+/.settings/
+/test-output
+/result
+/result/screenshot
+/.classpath

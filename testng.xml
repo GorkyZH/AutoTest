@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="2">
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="driverConfgFilePath" value="config/driver.properties"/>
+    <parameter name="testurl" value="https://mail.163.com/"/>
+    <parameter name="sleepTime" value="800"/>
+    <parameter name="timeOut" value="20"/>
+    <parameter name="waitMillisecondsForAlert" value="40000"/>
+    
+    <!-- 定义测试模块，用test标签包围 -->
+	<test name="login" preserve-order="true">
+	    <packages>
+	        <package name="com.demo.test.testcases.login"/>
+	    </packages>
+	</test>
+	<test name="home" preserve-order="true">
+	    <packages>
+	        <package name="com.demo.test.testcases.home"/>
+	    </packages>
+	</test>
+	
+	<listeners>
+	    <!-- arrow插件实现用例失败重跑以及生成测试报告 -->
+	    <listener class-name="com.demo.test.plugins.arrow.TestResultListener"/>
+	    <listener class-name="com.demo.test.plugins.arrow.RetryListener"/>
+	    <listener class-name="com.demo.test.plugins.arrow.PowerEmailableReporter"/>
+	</listeners>
+</suite> <!-- Suite -->
